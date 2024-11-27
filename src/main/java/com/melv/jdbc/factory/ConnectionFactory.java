@@ -12,7 +12,7 @@ public class ConnectionFactory {
 	//agrega tu propio user //Add your own user
 	private String user = "root";
 	//agrega tu propia contraseña //Add your own password
-	private String password = "chotabheem";
+	private String password = "RCB";
 	
 	private DataSource dataSource;
 	
