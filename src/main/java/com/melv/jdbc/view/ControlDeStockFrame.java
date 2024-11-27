@@ -25,9 +25,9 @@ public class ControlDeStockFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private JLabel labelNombre, labelDescripcion, labelCantidad, labelCategoria;
-    private JTextField textoName, textoDescripcion, textoCantidad;
+    private JTextField textoName, textoDescripcion, textQuantity;
     private JComboBox<Object> comboCategory;
-    private JButton buttonSave, botonModificar, botonLimpiar, botonEliminar, botonReporte;
+    private JButton buttonSave, botonModificar, buttonClear, botonEliminar, botonReporte;
     private JTable tabla;
     private DefaultTableModel modelo;
     private ProductoController productoController;
@@ -96,7 +96,7 @@ public class ControlDeStockFrame extends JFrame {
 
         textoName = new JTextField();
         textoDescripcion = new JTextField();
-        textoCantidad = new JTextField();
+        textQuantity = new JTextField();
         comboCategory = new JComboBox<>();
         comboCategory.addItem("Choose a Category");
 
@@ -106,13 +106,13 @@ public class ControlDeStockFrame extends JFrame {
 
         textoName.setBounds(10, 25, 265, 20);
         textoDescripcion.setBounds(10, 65, 265, 20);
-        textoCantidad.setBounds(10, 105, 265, 20);
+        textQuantity.setBounds(10, 105, 265, 20);
         comboCategory.setBounds(10, 145, 265, 20);
 
         buttonSave = new JButton("Insert");
-        botonLimpiar = new JButton("Reset");
+        buttonClear = new JButton("Reset");
         buttonSave.setBounds(10, 175, 80, 20);
-        botonLimpiar.setBounds(100, 175, 80, 20);
+        buttonClear.setBounds(100, 175, 80, 20);
 
         container.add(labelNombre);
         container.add(labelDescripcion);
@@ -120,10 +120,10 @@ public class ControlDeStockFrame extends JFrame {
         container.add(labelCategoria);
         container.add(textoName);
         container.add(textoDescripcion);
-        container.add(textoCantidad);
+        container.add(textQuantity);
         container.add(comboCategory);
         container.add(buttonSave);
-        container.add(botonLimpiar);
+        container.add(buttonClear);
     }
 
     private void configurarAccionesDelFormulario() {
@@ -135,7 +135,7 @@ public class ControlDeStockFrame extends JFrame {
             }
         });
 
-        botonLimpiar.addActionListener(new ActionListener() {
+        buttonClear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 limpiarFormulario();
             }
@@ -233,7 +233,7 @@ public class ControlDeStockFrame extends JFrame {
         Integer cantidadInt;
 
         try {
-            cantidadInt = Integer.parseInt(textoCantidad.getText());
+            cantidadInt = Integer.parseInt(textQuantity.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, String
                     .format("The quantity field must be numeric within the range %d y %d.", 0, Integer.MAX_VALUE));
@@ -254,7 +254,7 @@ public class ControlDeStockFrame extends JFrame {
     private void limpiarFormulario() {
         this.textoName.setText("");
         this.textoDescripcion.setText("");
-        this.textoCantidad.setText("");
+        this.textQuantity.setText("");
         this.comboCategory.setSelectedIndex(0);
     }
 
