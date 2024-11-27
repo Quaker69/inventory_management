@@ -24,8 +24,8 @@ public class ControlDeStockFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    private JLabel labelNombre, labelDescripcion, labelCantidad, labelCategoria;
-    private JTextField textoName, textoDescripcion, textQuantity;
+    private JLabel labelName, labelDescription, labelQuantity, labelCategoria;
+    private JTextField textName, textDescription, textQuantity;
     private JComboBox<Object> comboCategory;
     private JButton buttonSave, botonModificar, buttonClear, botonEliminar, botonReporte;
     private JTable tabla;
@@ -80,22 +80,22 @@ public class ControlDeStockFrame extends JFrame {
     }
 
     private void configurarCamposDelFormulario(Container container) {
-        labelNombre = new JLabel("Product Name");
-        labelDescripcion = new JLabel("Product Description");
-        labelCantidad = new JLabel("Quantity");
+        labelName = new JLabel("Product Name");
+        labelDescription = new JLabel("Product Description");
+        labelQuantity = new JLabel("Quantity");
         labelCategoria = new JLabel("Product category");
 
-        labelNombre.setBounds(10, 10, 240, 15);
-        labelDescripcion.setBounds(10, 50, 240, 15);
-        labelCantidad.setBounds(10, 90, 240, 15);
+        labelName.setBounds(10, 10, 240, 15);
+        labelDescription.setBounds(10, 50, 240, 15);
+        labelQuantity.setBounds(10, 90, 240, 15);
         labelCategoria.setBounds(10, 130, 240, 15);
 
-        labelNombre.setForeground(Color.BLACK);
-        labelDescripcion.setForeground(Color.BLACK);
+        labelName.setForeground(Color.BLACK);
+        labelDescription.setForeground(Color.BLACK);
         labelCategoria.setForeground(Color.BLACK);
 
-        textoName = new JTextField();
-        textoDescripcion = new JTextField();
+        textName = new JTextField();
+        textDescription = new JTextField();
         textQuantity = new JTextField();
         comboCategory = new JComboBox<>();
         comboCategory.addItem("Choose a Category");
@@ -104,8 +104,8 @@ public class ControlDeStockFrame extends JFrame {
         var categorias = this.categoriaController.listar();
         // categorias.forEach(categoria -> comboCategoria.addItem(categoria));
 
-        textoName.setBounds(10, 25, 265, 20);
-        textoDescripcion.setBounds(10, 65, 265, 20);
+        textName.setBounds(10, 25, 265, 20);
+        textDescription.setBounds(10, 65, 265, 20);
         textQuantity.setBounds(10, 105, 265, 20);
         comboCategory.setBounds(10, 145, 265, 20);
 
@@ -114,12 +114,12 @@ public class ControlDeStockFrame extends JFrame {
         buttonSave.setBounds(10, 175, 80, 20);
         buttonClear.setBounds(100, 175, 80, 20);
 
-        container.add(labelNombre);
-        container.add(labelDescripcion);
-        container.add(labelCantidad);
+        container.add(labelName);
+        container.add(labelDescription);
+        container.add(labelQuantity);
         container.add(labelCategoria);
-        container.add(textoName);
-        container.add(textoDescripcion);
+        container.add(textName);
+        container.add(textDescription);
         container.add(textQuantity);
         container.add(comboCategory);
         container.add(buttonSave);
@@ -225,7 +225,7 @@ public class ControlDeStockFrame extends JFrame {
     }
 
     private void guardar() {
-        if (textoName.getText().isBlank() || textoDescripcion.getText().isBlank()) {
+        if (textName.getText().isBlank() || textDescription.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "The Name and Description fields are required.");
             return;
         }
@@ -240,7 +240,7 @@ public class ControlDeStockFrame extends JFrame {
             return;
         }
 
-        var producto = new Producto(textoName.getText(), textoDescripcion.getText(), cantidadInt);
+        var producto = new Producto(textName.getText(), textDescription.getText(), cantidadInt);
         
         var categoria = comboCategory.getSelectedItem();
 
@@ -252,8 +252,8 @@ public class ControlDeStockFrame extends JFrame {
     }
 
     private void limpiarFormulario() {
-        this.textoName.setText("");
-        this.textoDescripcion.setText("");
+        this.textName.setText("");
+        this.textDescription.setText("");
         this.textQuantity.setText("");
         this.comboCategory.setSelectedIndex(0);
     }
