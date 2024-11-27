@@ -3,7 +3,7 @@ package com.melv.jdbc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriaController {
+public class CategoryController {
 
 	public List<?> listar() {
 		// TODO

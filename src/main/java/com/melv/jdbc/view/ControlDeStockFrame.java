@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.melv.jdbc.controller.CategoriaController;
+import com.melv.jdbc.controller.CategoryController;
 import com.melv.jdbc.controller.ProductoController;
 import com.melv.jdbc.model.Producto;
 
@@ -24,20 +24,20 @@ public class ControlDeStockFrame extends JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  private JLabel labelName, labelDescription, labelQuantity, labelCategoria;
+  private JLabel labelName, labelDescription, labelQuantity, labelCategory;
   private JTextField textName, textDescription, textQuantity;
   private JComboBox<Object> comboCategory;
-  private JButton buttonSave, botonModificar, buttonClear, botonEliminar, botonReporte;
+  private JButton buttonSave, buttonEdit, buttonClear, botonEliminar, botonReporte;
   private JTable tabla;
   private DefaultTableModel modelo;
-  private ProductoController productoController;
-  private CategoriaController categoriaController;
+  private ProductoController productController;
+  private CategoryController categoryController;
 
   public ControlDeStockFrame() {
     super("product");
 
-    this.categoriaController = new CategoriaController();
-    this.productoController = new ProductoController();
+    this.categoryController = new CategoryController();
+    this.productController = new ProductoController();
 
     Container container = getContentPane();
     setLayout(null);
@@ -58,20 +58,20 @@ public class ControlDeStockFrame extends JFrame {
     modelo.addColumn("Product Description");
     modelo.addColumn("Product quantity");
 
-    cargarTabla();
+    loadTable();
 
     tabla.setBounds(10, 205, 760, 280);
 
     botonEliminar = new JButton("Eliminate");
-    botonModificar = new JButton("Modify");
+    buttonEdit = new JButton("Modify");
     botonReporte = new JButton("Report");
     botonEliminar.setBounds(10, 500, 80, 20);
-    botonModificar.setBounds(100, 500, 80, 20);
+    buttonEdit.setBounds(100, 500, 80, 20);
     botonReporte.setBounds(190, 500, 80, 20);
 
     container.add(tabla);
     container.add(botonEliminar);
-    container.add(botonModificar);
+    container.add(buttonEdit);
     container.add(botonReporte);
 
     setSize(800, 600);
@@ -83,16 +83,16 @@ public class ControlDeStockFrame extends JFrame {
     labelName = new JLabel("Product Name");
     labelDescription = new JLabel("Product Description");
     labelQuantity = new JLabel("Quantity");
-    labelCategoria = new JLabel("Product category");
+    labelCategory = new JLabel("Product category");
 
     labelName.setBounds(10, 10, 240, 15);
     labelDescription.setBounds(10, 50, 240, 15);
     labelQuantity.setBounds(10, 90, 240, 15);
-    labelCategoria.setBounds(10, 130, 240, 15);
+    labelCategory.setBounds(10, 130, 240, 15);
 
     labelName.setForeground(Color.BLACK);
     labelDescription.setForeground(Color.BLACK);
-    labelCategoria.setForeground(Color.BLACK);
+    labelCategory.setForeground(Color.BLACK);
 
     textName = new JTextField();
     textDescription = new JTextField();
@@ -101,7 +101,7 @@ public class ControlDeStockFrame extends JFrame {
     comboCategory.addItem("Choose a Category");
 
     // TODO
-    var categorias = this.categoriaController.listar();
+    var categorias = this.categoryController.listar();
     // categorias.forEach(categoria -> comboCategoria.addItem(categoria));
 
     textName.setBounds(10, 25, 265, 20);
@@ -117,7 +117,7 @@ public class ControlDeStockFrame extends JFrame {
     container.add(labelName);
     container.add(labelDescription);
     container.add(labelQuantity);
-    container.add(labelCategoria);
+    container.add(labelCategory);
     container.add(textName);
     container.add(textDescription);
     container.add(textQuantity);
@@ -130,8 +130,8 @@ public class ControlDeStockFrame extends JFrame {
     buttonSave.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         guardar();
-        limpiarTabla();
-        cargarTabla();
+        cleanTable();
+        loadTable();
       }
     });
 
@@ -144,16 +144,16 @@ public class ControlDeStockFrame extends JFrame {
     botonEliminar.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         eliminar();
-        limpiarTabla();
-        cargarTabla();
+        cleanTable();
+        loadTable();
       }
     });
 
-    botonModificar.addActionListener(new ActionListener() {
+    buttonEdit.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         modificar();
-        limpiarTabla();
-        cargarTabla();
+        cleanTable();
+        loadTable();
       }
     });
 
@@ -168,7 +168,7 @@ public class ControlDeStockFrame extends JFrame {
     new ReporteFrame(this);
   }
 
-  private void limpiarTabla() {
+  private void cleanTable() {
     modelo.getDataVector().clear();
   }
 
@@ -190,7 +190,7 @@ public class ControlDeStockFrame extends JFrame {
           Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
 
           int filasModificadas;
-          filasModificadas = this.productoController.modificar(nombre, descripcion, cantidad, id);
+          filasModificadas = this.productController.modificar(nombre, descripcion, cantidad, id);
           JOptionPane.showMessageDialog(this, String.format("%d item successfully modified!", filasModificadas));
         }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
@@ -206,7 +206,7 @@ public class ControlDeStockFrame extends JFrame {
           Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
           int quantityRemoved;
           try {
-            quantityRemoved = this.productoController.eliminar(id);
+            quantityRemoved = this.productController.eliminar(id);
           } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -218,9 +218,9 @@ public class ControlDeStockFrame extends JFrame {
         }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
 
-  private void cargarTabla() {
+  private void loadTable() {
 
-    var productos = this.productoController.listar();
+    var productos = this.productController.listar();
     productos.forEach(producto -> modelo.addRow(
         new Object[] { producto.getId(), producto.getNombre(), producto.getDescripcion(), producto.getCantidad() }));
   }
@@ -245,7 +245,7 @@ public class ControlDeStockFrame extends JFrame {
 
     var categoria = comboCategory.getSelectedItem();
 
-    this.productoController.guardar(producto);
+    this.productController.guardar(producto);
 
     JOptionPane.showMessageDialog(this, "Successfully registered!");
 

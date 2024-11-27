@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.melv.jdbc.controller.CategoriaController;
+import com.melv.jdbc.controller.CategoryController;
 
 public class ReporteFrame extends JFrame {
 
@@ -15,12 +15,12 @@ public class ReporteFrame extends JFrame {
     private JTable tablaReporte;
     private DefaultTableModel modelo;
 
-    private CategoriaController categoriaController;
+    private CategoryController categoriaController;
 
     public ReporteFrame(ControlDeStockFrame controlDeStockFrame) {
         super("Stock Product Report");
 
-        this.categoriaController = new CategoriaController();
+        this.categoriaController = new CategoryController();
 
         Container container = getContentPane();
         setLayout(null);
