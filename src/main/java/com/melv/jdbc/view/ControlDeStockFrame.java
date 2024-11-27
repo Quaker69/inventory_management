@@ -25,9 +25,9 @@ public class ControlDeStockFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private JLabel labelNombre, labelDescripcion, labelCantidad, labelCategoria;
-    private JTextField textoNombre, textoDescripcion, textoCantidad;
-    private JComboBox<Object> comboCategoria;
-    private JButton botonGuardar, botonModificar, botonLimpiar, botonEliminar, botonReporte;
+    private JTextField textoName, textoDescripcion, textoCantidad;
+    private JComboBox<Object> comboCategory;
+    private JButton buttonSave, botonModificar, botonLimpiar, botonEliminar, botonReporte;
     private JTable tabla;
     private DefaultTableModel modelo;
     private ProductoController productoController;
@@ -94,40 +94,40 @@ public class ControlDeStockFrame extends JFrame {
         labelDescripcion.setForeground(Color.BLACK);
         labelCategoria.setForeground(Color.BLACK);
 
-        textoNombre = new JTextField();
+        textoName = new JTextField();
         textoDescripcion = new JTextField();
         textoCantidad = new JTextField();
-        comboCategoria = new JComboBox<>();
-        comboCategoria.addItem("Choose a Category");
+        comboCategory = new JComboBox<>();
+        comboCategory.addItem("Choose a Category");
 
         // TODO
         var categorias = this.categoriaController.listar();
         // categorias.forEach(categoria -> comboCategoria.addItem(categoria));
 
-        textoNombre.setBounds(10, 25, 265, 20);
+        textoName.setBounds(10, 25, 265, 20);
         textoDescripcion.setBounds(10, 65, 265, 20);
         textoCantidad.setBounds(10, 105, 265, 20);
-        comboCategoria.setBounds(10, 145, 265, 20);
+        comboCategory.setBounds(10, 145, 265, 20);
 
-        botonGuardar = new JButton("Insert");
+        buttonSave = new JButton("Insert");
         botonLimpiar = new JButton("Reset");
-        botonGuardar.setBounds(10, 175, 80, 20);
+        buttonSave.setBounds(10, 175, 80, 20);
         botonLimpiar.setBounds(100, 175, 80, 20);
 
         container.add(labelNombre);
         container.add(labelDescripcion);
         container.add(labelCantidad);
         container.add(labelCategoria);
-        container.add(textoNombre);
+        container.add(textoName);
         container.add(textoDescripcion);
         container.add(textoCantidad);
-        container.add(comboCategoria);
-        container.add(botonGuardar);
+        container.add(comboCategory);
+        container.add(buttonSave);
         container.add(botonLimpiar);
     }
 
     private void configurarAccionesDelFormulario() {
-        botonGuardar.addActionListener(new ActionListener() {
+        buttonSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 guardar();
                 limpiarTabla();
@@ -225,7 +225,7 @@ public class ControlDeStockFrame extends JFrame {
     }
 
     private void guardar() {
-        if (textoNombre.getText().isBlank() || textoDescripcion.getText().isBlank()) {
+        if (textoName.getText().isBlank() || textoDescripcion.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "The Name and Description fields are required.");
             return;
         }
@@ -240,9 +240,9 @@ public class ControlDeStockFrame extends JFrame {
             return;
         }
 
-        var producto = new Producto(textoNombre.getText(), textoDescripcion.getText(), cantidadInt);
+        var producto = new Producto(textoName.getText(), textoDescripcion.getText(), cantidadInt);
         
-        var categoria = comboCategoria.getSelectedItem();
+        var categoria = comboCategory.getSelectedItem();
 
 		this.productoController.guardar(producto);
 
@@ -252,10 +252,10 @@ public class ControlDeStockFrame extends JFrame {
     }
 
     private void limpiarFormulario() {
-        this.textoNombre.setText("");
+        this.textoName.setText("");
         this.textoDescripcion.setText("");
         this.textoCantidad.setText("");
-        this.comboCategoria.setSelectedIndex(0);
+        this.comboCategory.setSelectedIndex(0);
     }
 
 }
