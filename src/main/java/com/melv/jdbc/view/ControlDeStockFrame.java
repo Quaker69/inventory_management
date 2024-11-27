@@ -137,7 +137,7 @@ public class ControlDeStockFrame extends JFrame {
 
     buttonClear.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        limpiarFormulario();
+        cleanForm();
       }
     });
 
@@ -204,9 +204,9 @@ public class ControlDeStockFrame extends JFrame {
     Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
         .ifPresentOrElse(fila -> {
           Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
-          int cantidadEliminada;
+          int quantityRemoved;
           try {
-            cantidadEliminada = this.productoController.eliminar(id);
+            quantityRemoved = this.productoController.eliminar(id);
           } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -214,7 +214,7 @@ public class ControlDeStockFrame extends JFrame {
 
           modelo.removeRow(tabla.getSelectedRow());
 
-          JOptionPane.showMessageDialog(this, cantidadEliminada + " Item successfully deleted!");
+          JOptionPane.showMessageDialog(this, quantityRemoved + " Item successfully deleted!");
         }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
 
@@ -249,10 +249,10 @@ public class ControlDeStockFrame extends JFrame {
 
     JOptionPane.showMessageDialog(this, "Successfully registered!");
 
-    this.limpiarFormulario();
+    this.cleanForm();
   }
 
-  private void limpiarFormulario() {
+  private void cleanForm() {
     this.textName.setText("");
     this.textDescription.setText("");
     this.textQuantity.setText("");
