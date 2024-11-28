@@ -15,12 +15,12 @@ public class ReportFrameee extends JFrame {
     private JTable tablaReporte;
     private DefaultTableModel modelo;
 
-    private CategoryController categoriaController;
+    private CategoryController categoryyController;
 
     public ReportFrameee(StockFrameMain stockFrameMain) {
         super("Stock Product Report");
 
-        this.categoriaController = new CategoryController();
+        this.categoryyController = new CategoryController();
 
         Container container = getContentPane();
         setLayout(null);
@@ -35,18 +35,18 @@ public class ReportFrameee extends JFrame {
         modelo.addColumn("");
         modelo.addColumn("");
 
-        cargaReporte();
+        CreateReport();
 
         setSize(600, 400);
         setVisible(true);
         setLocationRelativeTo(stockFrameMain);
     }
 
-    private void cargaReporte() {
-        var contenido = categoriaController.createReportss();
+    private void CreateReport() {
+        var contenttt = categoryyController.createReportss();
         
         // TODO
-        contenido.forEach(fila -> modelo
+        contenttt.forEach(fila -> modelo
                 .addRow(new Object[] {}));
     }
 

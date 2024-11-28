@@ -1,4 +1,4 @@
-package com.melv.jdbc.factory;
+package com.melv.jdbc.databases_stuff_do_here;
 
 import java.sql.Connection;
 import java.sql.SQLException;

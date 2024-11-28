@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.melv.jdbc.dao.Product2something;
-import com.melv.jdbc.factory.ConnectionFactory;
+import com.melv.jdbc.databases_stuff_do_here.ConnectionFactory;
 import com.melv.jdbc.model.Product;
 
 public class ProductController {
