@@ -53,5 +53,6 @@ public class Product {
 
 
 	public void setCategory(String string) {
+		
 	}
 }
