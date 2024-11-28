@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Optional;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 import com.melv.jdbc.controller.CategoryController;
 import com.melv.jdbc.controller.ProductController;
 import com.melv.jdbc.model.Product;
@@ -27,14 +25,14 @@ public class StockFrameMain extends JFrame {
   private JLabel labelName, labelDescription, labelQuantity, labelCategory;
   private JTextField textName, textDescription, textQuantity;
   private JComboBox<Object> comboCategory;
-  private JButton buttonSave, buttonEdit, buttonClear, botonEliminar, botonReporte;
+  private JButton buttonSave, buttonEdit, buttonClear, botonEliminatee, botonReporteee;
   private JTable tabla;
   private DefaultTableModel modelo;
   private ProductController productController;
   private CategoryController categoryController;
 
   public StockFrameMain() {
-    super("product");
+    super("Product");
 
     this.categoryController = new CategoryController();
     this.productController = new ProductController();
@@ -43,36 +41,34 @@ public class StockFrameMain extends JFrame {
     setLayout(null);
 
     configurarCamposDelFormulario(container);
-
-    configurarTablaDeContenido(container);
-
-    configurarAccionesDelFormulario();
+    configureTableContentss(container);
+    configureFormActions();
   }
 
-  private void configurarTablaDeContenido(Container container) {
+  private void configureTableContentss(Container container) {
     tabla = new JTable();
 
     modelo = (DefaultTableModel) tabla.getModel();
     modelo.addColumn("Product Identifier");
     modelo.addColumn("Product Name");
     modelo.addColumn("Product Description");
-    modelo.addColumn("Product quantity");
+    modelo.addColumn("Product Quantity");
 
     loadTable();
 
     tabla.setBounds(10, 205, 760, 280);
 
-    botonEliminar = new JButton("Eliminate");
+    botonEliminatee = new JButton("Eliminate");
     buttonEdit = new JButton("Modify");
-    botonReporte = new JButton("Report");
-    botonEliminar.setBounds(10, 500, 80, 20);
+    botonReporteee = new JButton("Report");
+    botonEliminatee.setBounds(10, 500, 80, 20);
     buttonEdit.setBounds(100, 500, 80, 20);
-    botonReporte.setBounds(190, 500, 80, 20);
+    botonReporteee.setBounds(190, 500, 80, 20);
 
     container.add(tabla);
-    container.add(botonEliminar);
+    container.add(botonEliminatee);
     container.add(buttonEdit);
-    container.add(botonReporte);
+    container.add(botonReporteee);
 
     setSize(800, 600);
     setVisible(true);
@@ -83,7 +79,7 @@ public class StockFrameMain extends JFrame {
     labelName = new JLabel("Product Name");
     labelDescription = new JLabel("Product Description");
     labelQuantity = new JLabel("Quantity");
-    labelCategory = new JLabel("Product category");
+    labelCategory = new JLabel("Product Category");
 
     labelName.setBounds(10, 10, 240, 15);
     labelDescription.setBounds(10, 50, 240, 15);
@@ -98,11 +94,15 @@ public class StockFrameMain extends JFrame {
     textDescription = new JTextField();
     textQuantity = new JTextField();
     comboCategory = new JComboBox<>();
-    comboCategory.addItem("Choose a Category");
 
-    // TODO
-    var categorias = this.categoryController.listar();
-    // categorias.forEach(categoria -> comboCategoria.addItem(categoria));
+    // Add predefined categories to the ComboBox
+    comboCategory.addItem("Choose a Category");
+    comboCategory.addItem("Large-cap stocks");
+    comboCategory.addItem("Mid-cap stocks");
+    comboCategory.addItem("Small-cap stocks");
+    comboCategory.addItem("Sector stocks");
+    comboCategory.addItem("Domestic stocks");
+    comboCategory.addItem("International stocks");
 
     textName.setBounds(10, 25, 265, 20);
     textDescription.setBounds(10, 65, 265, 20);
@@ -126,7 +126,7 @@ public class StockFrameMain extends JFrame {
     container.add(buttonClear);
   }
 
-  private void configurarAccionesDelFormulario() {
+  private void configureFormActions() {
     buttonSave.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         guardar();
@@ -141,7 +141,7 @@ public class StockFrameMain extends JFrame {
       }
     });
 
-    botonEliminar.addActionListener(new ActionListener() {
+    botonEliminatee.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         eliminar();
         cleanTable();
@@ -157,7 +157,7 @@ public class StockFrameMain extends JFrame {
       }
     });
 
-    botonReporte.addActionListener(new ActionListener() {
+    botonReporteee.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         abrirReporte();
       }
@@ -183,46 +183,45 @@ public class StockFrameMain extends JFrame {
     }
 
     Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
-        .ifPresentOrElse(fila -> {
-          Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
-          String nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
-          String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
-          Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
+            .ifPresentOrElse(fila -> {
+              Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+              String nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
+              String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
+              Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
 
-          int filasModificadas;
-          filasModificadas = this.productController.modifcationss(nombre, descripcion, cantidad, id);
-          JOptionPane.showMessageDialog(this, String.format("%d item successfully modified!", filasModificadas));
-        }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
+              int filasModificadas;
+              filasModificadas = this.productController.modifcationss(nombre, descripcion, cantidad, id);
+              JOptionPane.showMessageDialog(this, String.format("%d item successfully modified!", filasModificadas));
+            }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
 
   private void eliminar() {
     if (tieneFilaElegida()) {
-      JOptionPane.showMessageDialog(this, "Successfully registered!");
+      JOptionPane.showMessageDialog(this, "Please choose an item");
       return;
     }
 
     Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
-        .ifPresentOrElse(fila -> {
-          Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
-          int quantityRemoved;
-          try {
-            quantityRemoved = this.productController.elinate_record(id);
-          } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-          }
+            .ifPresentOrElse(fila -> {
+              Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+              int quantityRemoved;
+              try {
+                quantityRemoved = this.productController.elinate_record(id);
+              } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+              }
 
-          modelo.removeRow(tabla.getSelectedRow());
+              modelo.removeRow(tabla.getSelectedRow());
 
-          JOptionPane.showMessageDialog(this, quantityRemoved + " Item successfully deleted!");
-        }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
+              JOptionPane.showMessageDialog(this, quantityRemoved + " Item successfully deleted!");
+            }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
 
   private void loadTable() {
-
     var productos = this.productController.listar();
     productos.forEach(product -> modelo.addRow(
-        new Object[] { product.getId(), product.getName(), product.getDescription(), product.getQuatityy() }));
+            new Object[] { product.getId(), product.getName(), product.getDescription(), product.getQuatityy() }));
   }
 
   private void guardar() {
@@ -237,13 +236,21 @@ public class StockFrameMain extends JFrame {
       cantidadInt = Integer.parseInt(textQuantity.getText());
     } catch (NumberFormatException e) {
       JOptionPane.showMessageDialog(this, String
-          .format("The quantity field must be numeric within the range %d y %d.", 0, Integer.MAX_VALUE));
+              .format("The quantity field must be numeric within the range %d y %d.", 0, Integer.MAX_VALUE));
       return;
     }
 
     var producto = new Product(textName.getText(), textDescription.getText(), cantidadInt);
 
+    // Handle selected category
     var categoria = comboCategory.getSelectedItem();
+    if (categoria == null || categoria.equals("Choose a Category")) {
+      JOptionPane.showMessageDialog(this, "Please select a valid category.");
+      return;
+    }
+
+    // Assuming you will assign the category to the product (or handle it accordingly)
+    producto.setCategory(categoria.toString());
 
     this.productController.guardar(producto);
 
@@ -258,5 +265,4 @@ public class StockFrameMain extends JFrame {
     this.textQuantity.setText("");
     this.comboCategory.setSelectedIndex(0);
   }
-
 }

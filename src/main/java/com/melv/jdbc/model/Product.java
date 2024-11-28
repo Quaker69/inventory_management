@@ -51,6 +51,7 @@ public class Product {
 		return String.format("{id: %s, nombre: %s, descripcion: %s, cantidad: %d}", this.id, this.nombre, this.descripcion, this.cantidad);
 		}
 
-	
-		
+
+	public void setCategory(String string) {
+	}
 }
