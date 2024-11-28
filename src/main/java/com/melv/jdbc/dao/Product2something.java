@@ -8,17 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.melv.jdbc.model.Producto;
+import com.melv.jdbc.model.Product;
 
-public class ProductoDAO {
+public class Product2something {
 
     private Connection con;
 
-    public ProductoDAO(Connection con) {
+    public Product2something(Connection con) {
         this.con = con;
     }
     
-    public void guardar(Producto producto) {
+    public void keep_it(Product product) {
         try {
             PreparedStatement statement;
                 statement = con.prepareStatement(
@@ -27,9 +27,9 @@ public class ProductoDAO {
                         + " VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
     
             try (statement) {
-                statement.setString(1, producto.getNombre());
-                statement.setString(2, producto.getDescripcion());
-                statement.setInt(3, producto.getCantidad());
+                statement.setString(1, product.getName());
+                statement.setString(2, product.getDescription());
+                statement.setInt(3, product.getQuatityy());
     
                 statement.execute();
     
@@ -37,9 +37,9 @@ public class ProductoDAO {
     
                 try (resultSet) {
                     while (resultSet.next()) {
-                        producto.setId(resultSet.getInt(1));
+                        product.setId(resultSet.getInt(1));
                         
-                        System.out.println(String.format("The product was inserted: %s", producto));
+                        System.out.println(String.format("The product was inserted: %s", product));
                     }
                 }
             }
@@ -48,8 +48,8 @@ public class ProductoDAO {
         }
     }
 
-    public List<Producto> listar() {
-        List<Producto> resultado = new ArrayList<>();
+    public List<Product> listar() {
+        List<Product> result_is = new ArrayList<>();
 
         try {
             final PreparedStatement statement = con
@@ -62,7 +62,7 @@ public class ProductoDAO {
     
                 try (resultSet) {
                     while (resultSet.next()) {
-                        resultado.add(new Producto(
+                        result_is.add(new Product(
                                 resultSet.getInt("ID"),
                                 resultSet.getString("NOMBRE"),
                                 resultSet.getString("DESCRIPCION"),
@@ -74,10 +74,10 @@ public class ProductoDAO {
             throw new RuntimeException(e);
         }
 
-        return resultado;
+        return result_is;
     }
 
-    public int eliminar(Integer id) {
+    public int elemniateeee(Integer id) {
         try {
             final PreparedStatement statement = con.prepareStatement("DELETE FROM PRODUCTO WHERE ID = ?");
 
@@ -94,7 +94,7 @@ public class ProductoDAO {
         }
     }
 
-    public int modificar(String nombre, String descripcion, Integer cantidad, Integer id) {
+    public int modificationsssss(String nombre, String descripcion, Integer cantidad, Integer id) {
         try {
             final PreparedStatement statement = con.prepareStatement(
                     "UPDATE PRODUCTO SET "

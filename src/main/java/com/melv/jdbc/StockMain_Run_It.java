@@ -2,12 +2,12 @@ package com.melv.jdbc;
 
 import javax.swing.JFrame;
 
-import com.melv.jdbc.view.ControlDeStockFrame;
+import com.melv.jdbc.view.StockFrameMain;
 
-public class ControlDeStockMain {
+public class StockMain_Run_It {
 
 	public static void main(String[] args) {
-		ControlDeStockFrame produtoCategoriaFrame = new ControlDeStockFrame();
+		StockFrameMain produtoCategoriaFrame = new StockFrameMain();
 		produtoCategoriaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 

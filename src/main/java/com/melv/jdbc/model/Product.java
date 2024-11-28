@@ -1,6 +1,6 @@
 package com.melv.jdbc.model;
 
-public class Producto {
+public class Product {
 
 	
 
@@ -12,28 +12,28 @@ public class Producto {
 
 		private Integer cantidad;
 		
-		public Producto(String nombre, String descripcion, Integer cantidad) {
+		public Product(String nombre, String descripcion, Integer cantidad) {
 			this.nombre = nombre;
 			this.descripcion = descripcion;
 			this.cantidad = cantidad;
 	}
 		
-		public Producto(int id, String nombre, String descripcion, int cantidad) {
+		public Product(int id, String nombre, String descripcion, int cantidad) {
 			this.id = id;
 			this.nombre = nombre;
 			this.descripcion = descripcion;
 			this.cantidad = cantidad;
 		}
 
-		public String getDescripcion() {
+		public String getDescription() {
 			return descripcion;
 		}
 
-		public String getNombre() {
+		public String getName() {
 			return nombre;
 		}
 
-		public Integer getCantidad() {
+		public Integer getQuatityy() {
 			return cantidad;
 		}
 

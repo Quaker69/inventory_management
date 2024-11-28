@@ -26,7 +26,7 @@ public class ConnectionFactory {
 		this.dataSource = pooledDatraSource;
 	}
 	
-	public Connection recuperaConexion() {
+	public Connection recoverConnection() {
 
 		
 		try {

@@ -10,7 +10,7 @@ public class CategoryController {
 		return new ArrayList<>();
 	}
 
-    public List<?> cargaReporte() {
+    public List<?> createReportss() {
         // TODO
         return new ArrayList<>();
     }

@@ -17,10 +17,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.melv.jdbc.controller.CategoryController;
-import com.melv.jdbc.controller.ProductoController;
-import com.melv.jdbc.model.Producto;
+import com.melv.jdbc.controller.ProductController;
+import com.melv.jdbc.model.Product;
 
-public class ControlDeStockFrame extends JFrame {
+public class StockFrameMain extends JFrame {
 
   private static final long serialVersionUID = 1L;
 
@@ -30,14 +30,14 @@ public class ControlDeStockFrame extends JFrame {
   private JButton buttonSave, buttonEdit, buttonClear, botonEliminar, botonReporte;
   private JTable tabla;
   private DefaultTableModel modelo;
-  private ProductoController productController;
+  private ProductController productController;
   private CategoryController categoryController;
 
-  public ControlDeStockFrame() {
+  public StockFrameMain() {
     super("product");
 
     this.categoryController = new CategoryController();
-    this.productController = new ProductoController();
+    this.productController = new ProductController();
 
     Container container = getContentPane();
     setLayout(null);
@@ -165,7 +165,7 @@ public class ControlDeStockFrame extends JFrame {
   }
 
   private void abrirReporte() {
-    new ReporteFrame(this);
+    new ReportFrameee(this);
   }
 
   private void cleanTable() {
@@ -190,7 +190,7 @@ public class ControlDeStockFrame extends JFrame {
           Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
 
           int filasModificadas;
-          filasModificadas = this.productController.modificar(nombre, descripcion, cantidad, id);
+          filasModificadas = this.productController.modifcationss(nombre, descripcion, cantidad, id);
           JOptionPane.showMessageDialog(this, String.format("%d item successfully modified!", filasModificadas));
         }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
   }
@@ -206,7 +206,7 @@ public class ControlDeStockFrame extends JFrame {
           Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
           int quantityRemoved;
           try {
-            quantityRemoved = this.productController.eliminar(id);
+            quantityRemoved = this.productController.elinate_record(id);
           } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -221,8 +221,8 @@ public class ControlDeStockFrame extends JFrame {
   private void loadTable() {
 
     var productos = this.productController.listar();
-    productos.forEach(producto -> modelo.addRow(
-        new Object[] { producto.getId(), producto.getNombre(), producto.getDescripcion(), producto.getCantidad() }));
+    productos.forEach(product -> modelo.addRow(
+        new Object[] { product.getId(), product.getName(), product.getDescription(), product.getQuatityy() }));
   }
 
   private void guardar() {
@@ -241,7 +241,7 @@ public class ControlDeStockFrame extends JFrame {
       return;
     }
 
-    var producto = new Producto(textName.getText(), textDescription.getText(), cantidadInt);
+    var producto = new Product(textName.getText(), textDescription.getText(), cantidadInt);
 
     var categoria = comboCategory.getSelectedItem();
 

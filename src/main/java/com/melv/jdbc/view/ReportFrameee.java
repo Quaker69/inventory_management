@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.melv.jdbc.controller.CategoryController;
 
-public class ReporteFrame extends JFrame {
+public class ReportFrameee extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,7 +17,7 @@ public class ReporteFrame extends JFrame {
 
     private CategoryController categoriaController;
 
-    public ReporteFrame(ControlDeStockFrame controlDeStockFrame) {
+    public ReportFrameee(StockFrameMain stockFrameMain) {
         super("Stock Product Report");
 
         this.categoriaController = new CategoryController();
@@ -39,11 +39,11 @@ public class ReporteFrame extends JFrame {
 
         setSize(600, 400);
         setVisible(true);
-        setLocationRelativeTo(controlDeStockFrame);
+        setLocationRelativeTo(stockFrameMain);
     }
 
     private void cargaReporte() {
-        var contenido = categoriaController.cargaReporte();
+        var contenido = categoriaController.createReportss();
         
         // TODO
         contenido.forEach(fila -> modelo
