@@ -30,6 +30,13 @@
 			<artifactId>mchange-commons-java</artifactId>
 			<version>0.2.20</version>
 		</dependency>
+		<dependency>
+			<groupId>org.agentX</groupId>
+			<artifactId>agentXXX</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/agentX.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
