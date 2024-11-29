@@ -27,7 +27,7 @@ public class StockFrameMain extends JFrame {
   private JComboBox<Object> comboCategory;
   private JButton buttonSave, buttonEdit, buttonClear, botonEliminatee, botonReporteee;
   private JTable tabla;
-  private DefaultTableModel modelo;
+  private DefaultTableModel modelllll_idk;
   private ProductController productController;
   private CategoryController categoryController;
 
@@ -48,11 +48,11 @@ public class StockFrameMain extends JFrame {
   private void configureTableContentss(Container container) {
     tabla = new JTable();
 
-    modelo = (DefaultTableModel) tabla.getModel();
-    modelo.addColumn("Product Identifier");
-    modelo.addColumn("Product Name");
-    modelo.addColumn("Product Description");
-    modelo.addColumn("Product Quantity");
+    modelllll_idk = (DefaultTableModel) tabla.getModel();
+    modelllll_idk.addColumn("Product Identifier");
+    modelllll_idk.addColumn("Product Name");
+    modelllll_idk.addColumn("Product Description");
+    modelllll_idk.addColumn("Product Quantity");
 
     loadTable();
 
@@ -169,7 +169,7 @@ public class StockFrameMain extends JFrame {
   }
 
   private void cleanTable() {
-    modelo.getDataVector().clear();
+    modelllll_idk.getDataVector().clear();
   }
 
   private boolean tieneFilaElegida() {
@@ -182,12 +182,12 @@ public class StockFrameMain extends JFrame {
       return;
     }
 
-    Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
+    Optional.ofNullable(modelllll_idk.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
             .ifPresentOrElse(fila -> {
-              Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
-              String nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
-              String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
-              Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
+              Integer id = Integer.valueOf(modelllll_idk.getValueAt(tabla.getSelectedRow(), 0).toString());
+              String nombre = (String) modelllll_idk.getValueAt(tabla.getSelectedRow(), 1);
+              String descripcion = (String) modelllll_idk.getValueAt(tabla.getSelectedRow(), 2);
+              Integer cantidad = Integer.valueOf(modelllll_idk.getValueAt(tabla.getSelectedRow(), 3).toString());
 
               int filasModificadas;
               filasModificadas = this.productController.modifcationss(nombre, descripcion, cantidad, id);
@@ -201,9 +201,9 @@ public class StockFrameMain extends JFrame {
       return;
     }
 
-    Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
+    Optional.ofNullable(modelllll_idk.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
             .ifPresentOrElse(fila -> {
-              Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+              Integer id = Integer.valueOf(modelllll_idk.getValueAt(tabla.getSelectedRow(), 0).toString());
               int quantityRemoved;
               try {
                 quantityRemoved = this.productController.elinate_record(id);
@@ -212,7 +212,7 @@ public class StockFrameMain extends JFrame {
                 throw new RuntimeException(e);
               }
 
-              modelo.removeRow(tabla.getSelectedRow());
+              modelllll_idk.removeRow(tabla.getSelectedRow());
 
               JOptionPane.showMessageDialog(this, quantityRemoved + " Item successfully deleted!");
             }, () -> JOptionPane.showMessageDialog(this, "Please choose an item"));
@@ -220,7 +220,7 @@ public class StockFrameMain extends JFrame {
 
   private void loadTable() {
     var productos = this.productController.listar();
-    productos.forEach(product -> modelo.addRow(
+    productos.forEach(product -> modelllll_idk.addRow(
             new Object[] { product.getId(), product.getName(), product.getDescription(), product.getQuatityy() }));
   }
 
@@ -243,14 +243,14 @@ public class StockFrameMain extends JFrame {
     var producto = new Product(textName.getText(), textDescription.getText(), cantidadInt);
 
     // Handle selected category
-    var categoria = comboCategory.getSelectedItem();
-    if (categoria == null || categoria.equals("Choose a Category")) {
+    var categoryWtfIdk = comboCategory.getSelectedItem();
+    if (categoryWtfIdk == null || categoryWtfIdk.equals("Choose a Category")) {
       JOptionPane.showMessageDialog(this, "Please select a valid category.");
       return;
     }
 
     // Assuming you will assign the category to the product (or handle it accordingly)
-    producto.setCategory(categoria.toString());
+    producto.setCategory(categoryWtfIdk.toString());
 
     this.productController.guardar(producto);
 
