@@ -1,18 +1,11 @@
 package com.melv.jdbc.view;
 
-import java.awt.Color;
-import java.awt.Container;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Optional;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import com.melv.jdbc.controller.CategoryController;
 import com.melv.jdbc.controller.ProductController;
@@ -162,6 +155,34 @@ public class StockFrameMain extends JFrame {
         abrirReporte();
       }
     });
+  }
+
+  private JTextField createTextField() {
+    JTextField textField = new JTextField();
+    textField.setFont(new Font("Arial", Font.PLAIN, 14));
+    textField.setBackground(Color.WHITE);
+    textField.setForeground(Color.BLACK);
+    textField.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
+    return textField;
+  }
+  private JButton createButton(String text) {
+    JButton button = new JButton(text);
+    button.setFont(new Font("Arial", Font.BOLD, 14));
+    button.setBackground(new Color(0, 123, 255));
+    button.setForeground(Color.WHITE);
+    button.setFocusPainted(false);
+    button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    return button;
+  }
+
+  private void customizeButton(JButton button) {
+    button.setFont(new Font("Arial", Font.BOLD, 14));
+    button.setBackground(new Color(0, 123, 255));
+    button.setForeground(Color.WHITE);
+    button.setFocusPainted(false);
+    button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
   }
 
   private void abrirReporte() {
