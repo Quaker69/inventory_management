@@ -10,7 +10,7 @@ import com.melv.jdbc.view.StockFrameMain;
 public class  StockMain_Run_It {
 
 	public static void main(String[] args) {
-
+/*
 		agentXXX agentX = new agentXXX();
 
 		String api_keyss = "kjdfhkjgr2i3hrjrbkjrh23iu4";
@@ -19,6 +19,7 @@ public class  StockMain_Run_It {
 		} else {
 		System.exit(1);
 		}
+		*/
 
 		CreateDb.createDatabaseAndTable();
 		StockFrameMain produtoCategoriaFrame = new StockFrameMain();
