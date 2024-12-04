@@ -1,12 +1,11 @@
-package com.melv.jdbc;
+package com.shata.jdbc;
 
 import javax.swing.JFrame;
 
 import org.agentX.agentXXX;
 
-
-import com.melv.jdbc.databases_stuff_do_here.CreateDb;
-import com.melv.jdbc.view.StockFrameMain;
+import com.shata.jdbc.databases_stuff_do_here.CreateDb;
+import com.shata.jdbc.view.StockFrameMain;
 
 public class  StockMain_Run_It {
 

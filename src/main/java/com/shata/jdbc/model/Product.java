@@ -1,4 +1,4 @@
-package com.melv.jdbc.model;
+package com.shata.jdbc.model;
 
 public class Product {
 

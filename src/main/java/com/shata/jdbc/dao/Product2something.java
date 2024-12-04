@@ -1,4 +1,4 @@
-package com.melv.jdbc.dao;
+package com.shata.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.melv.jdbc.model.Product;
+import com.shata.jdbc.model.Product;
 
 public class Product2something {
 
