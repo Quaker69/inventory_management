@@ -22,6 +22,7 @@ public class  StockMain_Run_It {
 		System.exit(1);
 		}
 		
+		
 
 		CreateDb.createDatabaseAndTable();
 		StockFrameMain produtoCategoriaFrame = new StockFrameMain();
