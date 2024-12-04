@@ -29,7 +29,7 @@ public class ProductController {
 	}
 
 
-    public void guardar(Product product) {
+    public void save(Product product) {
 		
 		product2something.keep_it(product);
     }
