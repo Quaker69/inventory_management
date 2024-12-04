@@ -10,18 +10,19 @@ import com.shata.jdbc.view.StockFrameMain;
 public class  StockMain_Run_It {
 
 	public static void main(String[] args) {
-/*
-		agentXXX agentX = new agentXXX();
 
+		
+/*
 		String api_keyss = "kjdfhkjgr2i3hrjrbkjrh23iu4";
-		boolean isAuthorized = agentX.callApi(api_keyss);
+		boolean isAuthorized = agentXXX.callApi(api_keyss);
 		if (isAuthorized) {
 		} else {
-			System.out.println("off");
+			System.out.println("authorization off");
 		System.exit(1);
 		}
 		
 		*/
+		
 		
 		
 
