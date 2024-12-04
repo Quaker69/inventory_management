@@ -1,1 +1,2 @@
+docker run --name mysql_stock -e MYSQL_ROOT_PASSWORD=harsha -p 3306:3306 -d mysql:latest
 docker start mysql_stock
