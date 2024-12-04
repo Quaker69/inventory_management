@@ -9,7 +9,7 @@
 	<description>stocks storage application</description>
 
 	<properties>
-		<java.version>17</java.version>
+		<java.version>20</java.version>
 	</properties>
 
 	<dependencies>
