@@ -279,7 +279,7 @@ public class StockFrameMain extends JFrame {
 
     this.cleanForm();
   }
-//hello
+
   private void cleanForm() {
     this.textName.setText("");
     this.textDescription.setText("");
