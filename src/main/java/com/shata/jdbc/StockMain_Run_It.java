@@ -10,7 +10,7 @@ import com.shata.jdbc.view.StockFrameMain;
 public class  StockMain_Run_It {
 
 	public static void main(String[] args) {
-
+/*
 		agentXXX agentX = new agentXXX();
 
 		String api_keyss = "kjdfhkjgr2i3hrjrbkjrh23iu4";
@@ -20,6 +20,8 @@ public class  StockMain_Run_It {
 			System.out.println("off");
 		System.exit(1);
 		}
+		
+		*/
 		
 		
 
