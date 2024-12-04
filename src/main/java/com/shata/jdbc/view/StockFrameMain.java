@@ -1,4 +1,4 @@
-package com.melv.jdbc.view;
+package com.shata.jdbc.view;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.util.Optional;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import com.melv.jdbc.controller.CategoryController;
-import com.melv.jdbc.controller.ProductController;
-import com.melv.jdbc.model.Product;
+
+import com.shata.jdbc.controller.CategoryController;
+import com.shata.jdbc.controller.ProductController;
+import com.shata.jdbc.model.Product;
 
 public class StockFrameMain extends JFrame {
 

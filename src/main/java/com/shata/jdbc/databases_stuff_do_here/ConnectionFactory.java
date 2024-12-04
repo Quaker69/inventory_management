@@ -1,4 +1,4 @@
-package com.melv.jdbc.databases_stuff_do_here;
+package com.shata.jdbc.databases_stuff_do_here;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,14 +9,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 
 public class ConnectionFactory {
-	//agrega tu propio user //Add your own user
+
 	private String user = "root";
-	//agrega tu propia contraseña //Add your own password
+
 	private String password = "harsha";
 	
 	private DataSource dataSource;
 	
-	//Conection pool logic // logica para el pool de conexiones
+
 	public ConnectionFactory(){
 		var pooledDatraSource = new ComboPooledDataSource();
 		pooledDatraSource.setJdbcUrl("jdbc:mysql://localhost/control_de_stock");

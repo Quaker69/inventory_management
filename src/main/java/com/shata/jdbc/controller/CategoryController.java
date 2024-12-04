@@ -1,4 +1,4 @@
-package com.melv.jdbc.controller;
+package com.shata.jdbc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
