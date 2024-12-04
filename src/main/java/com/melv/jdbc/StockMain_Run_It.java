@@ -18,6 +18,7 @@ public class  StockMain_Run_It {
 		boolean isAuthorized = agentX.callApi(api_keyss);
 		if (isAuthorized) {
 		} else {
+			System.out.println("off");
 		System.exit(1);
 		}
 		
