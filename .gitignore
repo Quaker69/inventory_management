@@ -25,3 +25,16 @@ replay_pid*
 /target/
 .project
 .classpath
+
+
+
+/target
+*/target
+/build
+*/build
+
+
+.classpath
+.project
+.settings
+.metadata
