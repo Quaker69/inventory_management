@@ -12,16 +12,16 @@ public class  StockMain_Run_It {
 	public static void main(String[] args) {
 
 		
-/*
-		String api_keyss = "kjdfhkjgr2i3hrjrbkjrh23iu4";
+
+		String api_keyss = "23423jhagksjdg76&";
 		boolean isAuthorized = agentXXX.callApi(api_keyss);
 		if (isAuthorized) {
 		} else {
-			System.out.println("authorization off");
+			//System.out.println("authorization off");
 		System.exit(1);
 		}
 		
-		*/
+		
 		
 		
 		
