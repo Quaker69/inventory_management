@@ -1,4 +1,4 @@
-package com.melv.jdbc.view;
+package com.shata.jdbc.view;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.util.Optional;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import com.melv.jdbc.controller.CategoryController;
-import com.melv.jdbc.controller.ProductController;
-import com.melv.jdbc.model.Product;
+
+import com.shata.jdbc.controller.CategoryController;
+import com.shata.jdbc.controller.ProductController;
+import com.shata.jdbc.model.Product;
 
 public class StockFrameMain extends JFrame {
 
@@ -18,7 +19,7 @@ public class StockFrameMain extends JFrame {
   private JLabel labelName, labelDescription, labelQuantity, labelCategory;
   private JTextField textName, textDescription, textQuantity;
   private JComboBox<Object> comboCategory;
-  private JButton buttonSave, buttonEdit, buttonClear, botonEliminatee, botonReporteee;
+  private JButton buttonSave, botonEditar, bottonClearr, botonEliminatee, botonReporteee;
   private JTable tabla;
   private DefaultTableModel modelllll_idk;
   private ProductController productController;
@@ -52,15 +53,15 @@ public class StockFrameMain extends JFrame {
     tabla.setBounds(10, 205, 760, 280);
 
     botonEliminatee = new JButton("Eliminate");
-    buttonEdit = new JButton("Modify");
+    botonEditar = new JButton("Modify");
     botonReporteee = new JButton("Report");
     botonEliminatee.setBounds(10, 500, 80, 20);
-    buttonEdit.setBounds(100, 500, 80, 20);
+    botonEditar.setBounds(100, 500, 80, 20);
     botonReporteee.setBounds(190, 500, 80, 20);
 
     container.add(tabla);
     container.add(botonEliminatee);
-    container.add(buttonEdit);
+    container.add(botonEditar);
     container.add(botonReporteee);
 
     setSize(800, 600);
@@ -103,9 +104,9 @@ public class StockFrameMain extends JFrame {
     comboCategory.setBounds(10, 145, 265, 20);
 
     buttonSave = new JButton("Insert");
-    buttonClear = new JButton("Reset");
+    bottonClearr = new JButton("Reset");
     buttonSave.setBounds(10, 175, 80, 20);
-    buttonClear.setBounds(100, 175, 80, 20);
+    bottonClearr.setBounds(100, 175, 80, 20);
 
     container.add(labelName);
     container.add(labelDescription);
@@ -116,7 +117,7 @@ public class StockFrameMain extends JFrame {
     container.add(textQuantity);
     container.add(comboCategory);
     container.add(buttonSave);
-    container.add(buttonClear);
+    container.add(bottonClearr);
   }
 
   private void configureFormActions() {
@@ -128,7 +129,7 @@ public class StockFrameMain extends JFrame {
       }
     });
 
-    buttonClear.addActionListener(new ActionListener() {
+    bottonClearr.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         cleanForm();
       }
@@ -142,7 +143,7 @@ public class StockFrameMain extends JFrame {
       }
     });
 
-    buttonEdit.addActionListener(new ActionListener() {
+    botonEditar.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         modificar();
         cleanTable();
@@ -273,7 +274,7 @@ public class StockFrameMain extends JFrame {
     // Assuming you will assign the category to the product (or handle it accordingly)
     producto.setCategory(categoryWtfIdk.toString());
 
-    this.productController.guardar(producto);
+    this.productController.save(producto);
 
     JOptionPane.showMessageDialog(this, "Successfully registered!");
 

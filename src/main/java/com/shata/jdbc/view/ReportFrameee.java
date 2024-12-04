@@ -1,4 +1,4 @@
-package com.melv.jdbc.view;
+package com.shata.jdbc.view;
 
 import java.awt.Container;
 
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.melv.jdbc.controller.CategoryController;
+import com.shata.jdbc.controller.CategoryController;
 
 public class ReportFrameee extends JFrame {
 

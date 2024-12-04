@@ -1,11 +1,11 @@
-package com.melv.jdbc.controller;
+package com.shata.jdbc.controller;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import com.melv.jdbc.dao.Product2something;
-import com.melv.jdbc.databases_stuff_do_here.ConnectionFactory;
-import com.melv.jdbc.model.Product;
+import com.shata.jdbc.dao.Product2something;
+import com.shata.jdbc.databases_stuff_do_here.ConnectionFactory;
+import com.shata.jdbc.model.Product;
 
 public class ProductController {
 
@@ -29,7 +29,7 @@ public class ProductController {
 	}
 
 
-    public void guardar(Product product) {
+    public void save(Product product) {
 		
 		product2something.keep_it(product);
     }
