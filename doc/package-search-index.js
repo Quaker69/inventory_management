@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.shata.jdbc"},{"l":"com.shata.jdbc.controller"},{"l":"com.shata.jdbc.dao"},{"l":"com.shata.jdbc.databases_stuff_do_here"},{"l":"com.shata.jdbc.model"},{"l":"com.shata.jdbc.view"}];updateSearchResults();
