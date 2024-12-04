@@ -24,8 +24,8 @@ public class  StockMain_Run_It {
 		
 
 		CreateDb.createDatabaseAndTable();
-		StockFrameMain produtoCategoriaFrame = new StockFrameMain();
-		produtoCategoriaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		StockFrameMain productCategoryFrameShata = new StockFrameMain();
+		productCategoryFrameShata.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
