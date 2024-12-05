@@ -14,7 +14,7 @@ import com.shata.jdbc.controller.CategoryController;
 import com.shata.jdbc.controller.ProductController;
 import com.shata.jdbc.model.Product;
 
-import javax.swing.*;
+
 import javax.swing.table.*;
 import java.awt.*;
 
@@ -43,7 +43,7 @@ public class StockFrameMain extends JFrame {
       // Load the GIF as a background
       JLabel backgroundLabel = new JLabel();
       try {
-          URL url = new URL("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzk2cHNjc2V1Z2FxbGdxdTUyeTZtY3BtcWllOXNtcDE4cWYxOWdpdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/20KPsijm70bLQ7VcqI/giphy.gif"); // Replace with your desired URL
+          URL url = new URL("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnVxOWgycWkzdHBjYzB6YjZpd2FmbzU4NnYxbzVsbTN3aXZ1Zm5hZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aRZ4vTsHnyW6A/giphy.gif"); // Replace with your desired URL
           ImageIcon gifIcon = new ImageIcon(url);
           backgroundLabel.setIcon(gifIcon);
       } catch (Exception e) {
@@ -72,7 +72,7 @@ public class StockFrameMain extends JFrame {
       });
 
       // Configure frame properties
-      setSize(500, 500);
+      setSize(510, 580);
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setVisible(true);
@@ -118,9 +118,9 @@ private void configureTableContentss(Container container) {
     botonEliminatee = new JButton("Eliminate");
     botonEditar = new JButton("Modify");
     botonReporteee = new JButton("Report");
-    botonEliminatee.setBounds(10, 500, 80, 20);
-    botonEditar.setBounds(100, 500, 80, 20);
-    botonReporteee.setBounds(190, 500, 80, 20);
+    botonEliminatee.setBounds(30, 500, 120, 20);
+    botonEditar.setBounds(180, 500, 120, 20);
+    botonReporteee.setBounds(320, 500, 120, 20);
 
     container.add(tabla);
     container.add(botonEliminatee);
@@ -138,14 +138,15 @@ private void configureTableContentss(Container container) {
     labelQuantity = new JLabel("Quantity");
     labelCategory = new JLabel("Product Category");
 
-    labelName.setBounds(10, 10, 240, 15);
-    labelDescription.setBounds(10, 50, 240, 15);
-    labelQuantity.setBounds(10, 90, 240, 15);
-    labelCategory.setBounds(10, 130, 240, 15);
+    labelName.setBounds(10, 10, 220, 15);
+    labelDescription.setBounds(10, 50, 220, 15);
+    labelQuantity.setBounds(10, 90, 220, 15);
+    labelCategory.setBounds(10, 130, 220, 15);
 
     labelName.setForeground(Color.WHITE);
     labelDescription.setForeground(Color.WHITE);
     labelCategory.setForeground(Color.WHITE);
+    labelQuantity.setForeground(Color.WHITE);
 
     textName = new JTextField();
     textDescription = new JTextField();
@@ -225,7 +226,7 @@ private void configureTableContentss(Container container) {
     JTextField textField = new JTextField();
     textField.setFont(new Font("Arial", Font.PLAIN, 14));
     textField.setBackground(Color.WHITE);
-    textField.setForeground(Color.BLACK);
+    textField.setForeground(Color.WHITE);
     textField.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
     return textField;
   }
