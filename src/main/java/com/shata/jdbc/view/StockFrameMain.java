@@ -14,6 +14,10 @@ import com.shata.jdbc.controller.CategoryController;
 import com.shata.jdbc.controller.ProductController;
 import com.shata.jdbc.model.Product;
 
+import javax.swing.*;
+import javax.swing.table.*;
+import java.awt.*;
+
 public class StockFrameMain extends JFrame {
 
   private static final long serialVersionUID = 1L;
@@ -68,7 +72,7 @@ public class StockFrameMain extends JFrame {
       });
 
       // Configure frame properties
-      setSize(400, 500);
+      setSize(500, 500);
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setVisible(true);
@@ -78,7 +82,8 @@ public class StockFrameMain extends JFrame {
 
   
 
-  private void configureTableContentss(Container container) {
+  @SuppressWarnings("serial")
+private void configureTableContentss(Container container) {
     tabla = new JTable();
 
     modelllll_idk = (DefaultTableModel) tabla.getModel();
@@ -86,10 +91,29 @@ public class StockFrameMain extends JFrame {
     modelllll_idk.addColumn("Product Name");
     modelllll_idk.addColumn("Product Description");
     modelllll_idk.addColumn("Product Quantity");
+    
+    //edits
+    tabla.setOpaque(false);
+    tabla.getTableHeader().setOpaque(false);
+    
+  
+ 
+    tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            c.setBackground(new Color(0, 0, 0, 0)); // Transparent background for cells
+            c.setForeground(Color.WHITE);
+            return c;
+        }
+    });
+    
+    
 
+    
+    //edits
     loadTable();
 
-    tabla.setBounds(10, 205, 760, 280);
+    tabla.setBounds(10, 205, 580, 280);
 
     botonEliminatee = new JButton("Eliminate");
     botonEditar = new JButton("Modify");
@@ -103,7 +127,7 @@ public class StockFrameMain extends JFrame {
     container.add(botonEditar);
     container.add(botonReporteee);
 
-    setSize(800, 600);
+    setSize(500, 600);
     setVisible(true);
     setLocationRelativeTo(null);
   }
@@ -119,9 +143,9 @@ public class StockFrameMain extends JFrame {
     labelQuantity.setBounds(10, 90, 240, 15);
     labelCategory.setBounds(10, 130, 240, 15);
 
-    labelName.setForeground(Color.BLACK);
-    labelDescription.setForeground(Color.BLACK);
-    labelCategory.setForeground(Color.BLACK);
+    labelName.setForeground(Color.WHITE);
+    labelDescription.setForeground(Color.WHITE);
+    labelCategory.setForeground(Color.WHITE);
 
     textName = new JTextField();
     textDescription = new JTextField();
