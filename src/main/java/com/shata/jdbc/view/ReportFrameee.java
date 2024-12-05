@@ -1,30 +1,26 @@
 package com.shata.jdbc.view;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.util.List;
-
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-
-
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import com.shata.jdbc.controller.CategoryController;
-import com.shata.jdbc.controller.ProductController;
 import com.shata.jdbc.model.Product;
+import com.shata.jdbc.controller.ProductController;
 
 public class ReportFrameee extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    
-
+    // Constructor to accept the list of products
     public ReportFrameee(StockFrameMain stockFrameMain) {
-    	super("Stock Product Report");
+        super("Stock Product Report");
 
         // Get the products from the ProductController
         ProductController productController = new ProductController();
@@ -35,6 +31,9 @@ public class ReportFrameee extends JFrame {
 
         // Create the bar chart
         JFreeChart barChart = createChart(dataset);
+
+        // Customize bar colors
+        customizeBarColors(barChart, products.size());
 
         // Create a chart panel and add it to the content pane
         ChartPanel chartPanel = new ChartPanel(barChart);
@@ -47,7 +46,8 @@ public class ReportFrameee extends JFrame {
         setVisible(true);
         setLocationRelativeTo(stockFrameMain);
     }
-    
+
+    // Method to create the dataset for the chart
     private DefaultCategoryDataset createDataset(List<Product> products) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -62,21 +62,35 @@ public class ReportFrameee extends JFrame {
 
         return dataset;
     }
+
+    // Method to create the bar chart
     private JFreeChart createChart(DefaultCategoryDataset dataset) {
         return ChartFactory.createBarChart(
                 "Stock Product Report",   // Chart title
                 "Product",                // X-axis label
                 "Stock Quantity",         // Y-axis label
                 dataset,                  // Dataset
-                org.jfree.chart.plot.PlotOrientation.VERTICAL, 
+                PlotOrientation.VERTICAL, 
                 true,                     // Show legend
                 true,                     // Show tooltips
                 false                     // No URLs
         );
     }
-    
-  
 
-    
+    // Method to customize the bar colors
+    private void customizeBarColors(JFreeChart barChart, int numberOfBars) {
+        CategoryPlot plot = barChart.getCategoryPlot();
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
 
+        // Define a set of colors for the bars
+        Color[] barColors = new Color[] {
+            Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.CYAN,
+            Color.MAGENTA, Color.PINK, Color.YELLOW, Color.GRAY, Color.LIGHT_GRAY
+        };
+
+        // Loop through each bar and set a different color
+        for (int i = 0; i < numberOfBars; i++) {
+            renderer.setSeriesPaint(i, barColors[i % barColors.length]);
+        }
+    }
 }
