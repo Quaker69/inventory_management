@@ -31,7 +31,8 @@ public class StockFrameMain extends JFrame {
   private ProductController productController;
   private CategoryController categoryController;
 
-  public StockFrameMain() {
+  @SuppressWarnings("deprecation")
+public StockFrameMain() {
       super("Product");
 
       this.categoryController = new CategoryController();

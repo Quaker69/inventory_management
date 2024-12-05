@@ -31,6 +31,11 @@
 			<version>0.2.20</version>
 		</dependency>
 		<dependency>
+    	<groupId>org.jfree</groupId>
+    		<artifactId>jfreechart</artifactId>
+    		<version>1.5.3</version>
+		</dependency>
+		<dependency>
 			<groupId>org.agentX</groupId>
 			<artifactId>agentXXX</artifactId>
 			<version>1.0</version>
