@@ -68,7 +68,7 @@ public class StockFrameMain extends JFrame {
       });
 
       // Configure frame properties
-      setSize(400, 500);
+      setSize(600, 700);
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setVisible(true);
@@ -103,7 +103,7 @@ public class StockFrameMain extends JFrame {
     container.add(botonEditar);
     container.add(botonReporteee);
 
-    setSize(800, 600);
+    setSize(600, 550);
     setVisible(true);
     setLocationRelativeTo(null);
   }
