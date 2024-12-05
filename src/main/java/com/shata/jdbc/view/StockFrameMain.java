@@ -1,8 +1,10 @@
 package com.shata.jdbc.view;
-
+import java.net.URL;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.sql.SQLException;
 import java.util.Optional;
 import javax.swing.*;
@@ -26,18 +28,55 @@ public class StockFrameMain extends JFrame {
   private CategoryController categoryController;
 
   public StockFrameMain() {
-    super("Product");
+      super("Product");
 
-    this.categoryController = new CategoryController();
-    this.productController = new ProductController();
+      this.categoryController = new CategoryController();
+      this.productController = new ProductController();
 
-    Container container = getContentPane();
-    setLayout(null);
+      // Set layout for absolute positioning
+      setLayout(null);
 
-    configurarCamposDelFormulario(container);
-    configureTableContentss(container);
-    configureFormActions();
+      // Load the GIF as a background
+      JLabel backgroundLabel = new JLabel();
+      try {
+          URL url = new URL("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzk2cHNjc2V1Z2FxbGdxdTUyeTZtY3BtcWllOXNtcDE4cWYxOWdpdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/20KPsijm70bLQ7VcqI/giphy.gif"); // Replace with your desired URL
+          ImageIcon gifIcon = new ImageIcon(url);
+          backgroundLabel.setIcon(gifIcon);
+      } catch (Exception e) {
+          JOptionPane.showMessageDialog(this, "Error: Unable to load background GIF.");
+          e.printStackTrace();
+      }
+      
+      // Set initial bounds for the background label
+      backgroundLabel.setBounds(0, 0, getWidth(), getHeight()); // Set bounds relative to the JFrame size
+      getContentPane().add(backgroundLabel);
+
+      // Configure components and add them on top of the background
+      configurarCamposDelFormulario(getContentPane());
+      configureTableContentss(getContentPane());
+      configureFormActions();
+
+      // Ensure the background label stays behind all other components
+      getContentPane().setComponentZOrder(backgroundLabel, getContentPane().getComponentCount() - 1);
+
+      // Add a component listener to resize the background label when the window is resized
+      addComponentListener(new ComponentAdapter() {
+          public void componentResized(ComponentEvent e) {
+              // Update the size of the background label to match the JFrame size
+              backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+          }
+      });
+
+      // Configure frame properties
+      setSize(400, 500);
+      setLocationRelativeTo(null);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setVisible(true);
   }
+
+
+
+  
 
   private void configureTableContentss(Container container) {
     tabla = new JTable();
