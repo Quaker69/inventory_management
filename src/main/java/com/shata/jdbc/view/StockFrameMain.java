@@ -40,6 +40,16 @@ public StockFrameMain() {
 
       // Set layout for absolute positioning
       setLayout(null);
+      
+      try {
+          URL iconUrl = new URL("https://static.thenounproject.com/png/4866887-200.png");
+          ImageIcon icon = new ImageIcon(iconUrl);
+          Image image = icon.getImage();  // Convert to Image object
+          setIconImage(image);  // Set the icon image for the application window
+      } catch (Exception e) {
+          JOptionPane.showMessageDialog(this, "Error: Unable to load icon.");
+          e.printStackTrace();
+      }
 
       // Load the GIF as a background
       JLabel backgroundLabel = new JLabel();
