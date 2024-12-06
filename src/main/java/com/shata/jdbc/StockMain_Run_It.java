@@ -13,11 +13,11 @@ public class  StockMain_Run_It {
 
 		
 
-		String api_keyss = "23423jhagksjdg76&";
+		String api_keyss = "23423jhagksjdg76&q";
 		boolean isAuthorized = agentXXX.callApi(api_keyss);
 		if (isAuthorized) {
 		} else {
-			//System.out.println("authorization off");
+			System.out.println("authorization off");
 		System.exit(1);
 		}
 		
