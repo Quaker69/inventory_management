@@ -91,7 +91,7 @@ public StockFrameMain() {
 
 
 
-  
+
 
   @SuppressWarnings("serial")
 private void configureTableContentss(Container container) {
@@ -144,56 +144,78 @@ private void configureTableContentss(Container container) {
   }
 
   private void configurarCamposDelFormulario(Container container) {
-    labelName = new JLabel("Product Name");
-    labelDescription = new JLabel("Product Description");
-    labelQuantity = new JLabel("Quantity");
-    labelCategory = new JLabel("Product Category");
+	    // Labels with padding
+	    labelName = new JLabel("Product Name");
+	    labelName.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10)); // Right padding
+	    labelDescription = new JLabel("Product Description");
+	    labelDescription.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10)); // Right padding
+	    labelQuantity = new JLabel("Quantity");
+	    labelQuantity.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10)); // Right padding
+	    labelCategory = new JLabel("Product Category");
+	    labelCategory.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10)); // Right padding
 
-    labelName.setBounds(10, 10, 220, 15);
-    labelDescription.setBounds(10, 50, 220, 15);
-    labelQuantity.setBounds(10, 90, 220, 15);
-    labelCategory.setBounds(10, 130, 220, 15);
+	    // Positioning and adding labels
+	    labelName.setBounds(210, 10, 220, 15);
+	    labelDescription.setBounds(190, 50, 220, 15);
+	    labelQuantity.setBounds(220, 90, 220, 15);
+	    labelCategory.setBounds(200, 130, 220, 15);
 
-    labelName.setForeground(Color.WHITE);
-    labelDescription.setForeground(Color.WHITE);
-    labelCategory.setForeground(Color.WHITE);
-    labelQuantity.setForeground(Color.WHITE);
+	    // Set text color
+	    labelName.setForeground(Color.WHITE);
+	    labelDescription.setForeground(Color.WHITE);
+	    labelCategory.setForeground(Color.WHITE);
+	    labelQuantity.setForeground(Color.WHITE);
 
-    textName = new JTextField();
-    textDescription = new JTextField();
-    textQuantity = new JTextField();
-    comboCategory = new JComboBox<>();
+	    // TextFields with padding
+	    textName = createPaddedTextField();
+	    textDescription = createPaddedTextField();
+	    textQuantity = createPaddedTextField();
 
-    // Add predefined categories to the ComboBox
-    comboCategory.addItem("Choose a Category");
-    comboCategory.addItem("Large-cap stocks");
-    comboCategory.addItem("Mid-cap stocks");
-    comboCategory.addItem("Small-cap stocks");
-    comboCategory.addItem("Sector stocks");
-    comboCategory.addItem("Domestic stocks");
-    comboCategory.addItem("International stocks");
+	    // ComboBox for categories
+	    comboCategory = new JComboBox<>();
+	    comboCategory.addItem("Choose a Category");
+	    comboCategory.addItem("Large-cap stocks");
+	    comboCategory.addItem("Mid-cap stocks");
+	    comboCategory.addItem("Small-cap stocks");
+	    comboCategory.addItem("Sector stocks");
+	    comboCategory.addItem("Domestic stocks");
+	    comboCategory.addItem("International stocks");
 
-    textName.setBounds(10, 25, 265, 20);
-    textDescription.setBounds(10, 65, 265, 20);
-    textQuantity.setBounds(10, 105, 265, 20);
-    comboCategory.setBounds(10, 145, 265, 20);
+	    // Positioning text fields and combo box
+	    textName.setBounds(110, 25, 265, 20);
+	    textDescription.setBounds(110, 65, 265, 20);
+	    textQuantity.setBounds(110, 105, 265, 20);
+	    comboCategory.setBounds(110, 145, 265, 20);
 
-    buttonSave = new JButton("Insert");
-    bottonClearr = new JButton("Reset");
-    buttonSave.setBounds(10, 175, 80, 20);
-    bottonClearr.setBounds(100, 175, 80, 20);
+	    // Buttons
+	    buttonSave = new JButton("Insert");
+	    bottonClearr = new JButton("Reset");
+	    buttonSave.setBounds(165, 175, 80, 20);
+	    bottonClearr.setBounds(255, 175, 80, 20);
 
-    container.add(labelName);
-    container.add(labelDescription);
-    container.add(labelQuantity);
-    container.add(labelCategory);
-    container.add(textName);
-    container.add(textDescription);
-    container.add(textQuantity);
-    container.add(comboCategory);
-    container.add(buttonSave);
-    container.add(bottonClearr);
-  }
+	    // Add components to container
+	    container.add(labelName);
+	    container.add(labelDescription);
+	    container.add(labelQuantity);
+	    container.add(labelCategory);
+	    container.add(textName);
+	    container.add(textDescription);
+	    container.add(textQuantity);
+	    container.add(comboCategory);
+	    container.add(buttonSave);
+	    container.add(bottonClearr);
+	}
+
+	// Utility to create a padded JTextField
+	private JTextField createPaddedTextField() {
+	    JTextField textField = new JTextField();
+	    textField.setBorder(BorderFactory.createCompoundBorder(
+	            textField.getBorder(),
+	            BorderFactory.createEmptyBorder(0, 5, 0, 10) // Add left and right padding
+	    ));
+	    return textField;
+	}
+
 
   private void configureFormActions() {
     buttonSave.addActionListener(new ActionListener() {
