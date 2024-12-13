@@ -24,7 +24,7 @@ public class LoginFrame extends JFrame {
     	    e.printStackTrace();
     	}
 
-        // Set the window title and default close operation
+        // Set the window title and default close operation..
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
