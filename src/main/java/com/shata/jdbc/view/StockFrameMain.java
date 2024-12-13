@@ -25,7 +25,7 @@ public class StockFrameMain extends JFrame {
   private JLabel labelName, labelDescription, labelQuantity, labelCategory;
   private JTextField textName, textDescription, textQuantity;
   private JComboBox<Object> comboCategory;
-  private JButton buttonSave, botonEditar, bottonClearr, botonEliminatee, botonReporteee;
+  private JButton buttonSave, botonEditar, bottonClearr, botonEliminatee, botonReporteee,botonAbout;
   private JTable tabla;
   private DefaultTableModel modelllll_idk;
   private ProductController productController;
@@ -129,15 +129,36 @@ private void configureTableContentss(Container container) {
     botonEliminatee = new JButton("Eliminate");
     botonEditar = new JButton("Modify");
     botonReporteee = new JButton("Report");
+    
+    
+    botonAbout = new JButton("About");
+
     botonEliminatee.setBounds(30, 500, 120, 20);
     botonEditar.setBounds(180, 500, 120, 20);
     botonReporteee.setBounds(320, 500, 120, 20);
+    botonEliminatee.setToolTipText("Eliminate record");
+    botonEditar.setToolTipText("Modify record");
+    botonReporteee.setToolTipText("Get Report");
+
+
+
+
+    botonAbout.setBounds(180, 470, 120, 20);
+    botonAbout.setToolTipText("Click to view about information");
+
+    
+    botonAbout.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            // Open the About page when the button is clicked
+            new AboutPage();
+        }
+    });
 
     container.add(tabla);
     container.add(botonEliminatee);
     container.add(botonEditar);
     container.add(botonReporteee);
-
+    container.add(botonAbout);
     setSize(500, 600);
     setVisible(true);
     setLocationRelativeTo(null);
