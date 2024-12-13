@@ -33,7 +33,7 @@ public class StockFrameMain extends JFrame {
 
   @SuppressWarnings("deprecation")
 public StockFrameMain() {
-      super("Product");
+      super("Inventory Mangement ");
 
       this.categoryController = new CategoryController();
       this.productController = new ProductController();
