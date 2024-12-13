@@ -1,4 +1,5 @@
 package com.shata.jdbc;
+import com.shata.jdbc.view.LoginFrame;
 
 import javax.swing.JFrame;
 
@@ -27,8 +28,10 @@ public class  StockMain_Run_It {
 		
 
 		CreateDb.createDatabaseAndTable();
-		StockFrameMain productCategoryFrameShata = new StockFrameMain();
-		productCategoryFrameShata.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		LoginFrame loginFrame = new LoginFrame();
+		loginFrame.setVisible(true);
+		//StockFrameMain productCategoryFrameShata = new StockFrameMain();
+		//productCategoryFrameShata.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
