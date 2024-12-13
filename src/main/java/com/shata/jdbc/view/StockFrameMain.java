@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import com.shata.jdbc.controller.CategoryController;
 import com.shata.jdbc.controller.ProductController;
 import com.shata.jdbc.model.Product;
+//shata
 
 
 import javax.swing.table.*;
