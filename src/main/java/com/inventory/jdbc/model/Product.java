@@ -1,4 +1,4 @@
-package com.shata.jdbc.model;
+package com.inventory.jdbc.model;
 
 public class Product {
 

@@ -1,4 +1,4 @@
-package com.shata.jdbc.databases_stuff_do_here;
+package com.inventory.jdbc.databases_stuff_do_here;
 
 import java.sql.Connection;
 import java.sql.SQLException;

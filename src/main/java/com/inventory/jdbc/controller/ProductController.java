@@ -1,11 +1,11 @@
-package com.shata.jdbc.controller;
+package com.inventory.jdbc.controller;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import com.shata.jdbc.dao.Product2something;
-import com.shata.jdbc.databases_stuff_do_here.ConnectionFactory;
-import com.shata.jdbc.model.Product;
+import com.inventory.jdbc.dao.Product2something;
+import com.inventory.jdbc.databases_stuff_do_here.ConnectionFactory;
+import com.inventory.jdbc.model.Product;
 
 public class ProductController {
 

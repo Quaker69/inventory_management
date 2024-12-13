@@ -1,4 +1,4 @@
-package com.shata.jdbc.controller;
+package com.inventory.jdbc.controller;
 
 import java.util.ArrayList;
 import java.util.List;

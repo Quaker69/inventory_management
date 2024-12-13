@@ -1,4 +1,4 @@
-package com.shata.jdbc.view;
+package com.inventory.jdbc.view;
 
 import javax.swing.*;
 import java.awt.*;

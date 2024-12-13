@@ -1,4 +1,4 @@
-package com.shata.jdbc.view;
+package com.inventory.jdbc.view;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -11,8 +11,9 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import com.shata.jdbc.model.Product;
-import com.shata.jdbc.controller.ProductController;
+
+import com.inventory.jdbc.controller.ProductController;
+import com.inventory.jdbc.model.Product;
 
 public class ReportFrameee extends JFrame {
 

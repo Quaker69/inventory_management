@@ -1,4 +1,4 @@
-package com.shata.jdbc.dao;
+package com.inventory.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.shata.jdbc.model.Product;
+import com.inventory.jdbc.model.Product;
 
 public class Product2something {
 

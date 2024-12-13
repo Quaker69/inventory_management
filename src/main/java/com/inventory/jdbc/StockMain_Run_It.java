@@ -1,12 +1,11 @@
-package com.shata.jdbc;
-import com.shata.jdbc.view.LoginFrame;
-
+package com.inventory.jdbc;
 import javax.swing.JFrame;
 
 import org.agentX.agentXXX;
 
-import com.shata.jdbc.databases_stuff_do_here.CreateDb;
-import com.shata.jdbc.view.StockFrameMain;
+import com.inventory.jdbc.databases_stuff_do_here.CreateDb;
+import com.inventory.jdbc.view.LoginFrame;
+import com.inventory.jdbc.view.StockFrameMain;
 
 public class  StockMain_Run_It {
 

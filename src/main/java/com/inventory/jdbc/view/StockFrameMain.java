@@ -1,4 +1,4 @@
-package com.shata.jdbc.view;
+package com.inventory.jdbc.view;
 import java.net.URL;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,9 @@ import java.util.Optional;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import com.shata.jdbc.controller.CategoryController;
-import com.shata.jdbc.controller.ProductController;
-import com.shata.jdbc.model.Product;
-//shata
-
+import com.inventory.jdbc.controller.CategoryController;
+import com.inventory.jdbc.controller.ProductController;
+import com.inventory.jdbc.model.Product;
 
 import javax.swing.table.*;
 import java.awt.*;
