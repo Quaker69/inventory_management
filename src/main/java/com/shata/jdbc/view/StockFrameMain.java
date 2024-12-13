@@ -94,37 +94,40 @@ public StockFrameMain() {
 
 
   @SuppressWarnings("serial")
-private void configureTableContentss(Container container) {
-    tabla = new JTable();
+  private void configureTableContentss(Container container) {
+	    tabla = new JTable();
+	    modelllll_idk = (DefaultTableModel) tabla.getModel();
+	    
+	    modelllll_idk.addColumn("Product Identifier");
+	    modelllll_idk.addColumn("Product Name");
+	    modelllll_idk.addColumn("Product Description");
+	    modelllll_idk.addColumn("Product Quantity");
 
-    modelllll_idk = (DefaultTableModel) tabla.getModel();
-    modelllll_idk.addColumn("Product Identifier");
-    modelllll_idk.addColumn("Product Name");
-    modelllll_idk.addColumn("Product Description");
-    modelllll_idk.addColumn("Product Quantity");
-    
-    //edits
-    tabla.setOpaque(false);
-    tabla.getTableHeader().setOpaque(false);
-    
-  
- 
-    tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            c.setBackground(new Color(0, 0, 0, 0)); // Transparent background for cells
-            c.setForeground(Color.WHITE);
-            return c;
-        }
-    });
+	    // Set font size for the table content
+	    tabla.setFont(new Font("Arial", Font.PLAIN, 14));  // Set font size 14 for table content
+	    tabla.getTableHeader().setFont(new Font("Arial", Font.ITALIC, 14));  // Set font size 14 for header (bold)
+
+	    // Adjust the table size and column widths
+	    tabla.setBounds(10, 205, 480, 280);
+	    TableColumnModel columnModel = tabla.getColumnModel();
+	    columnModel.getColumn(0).setPreferredWidth(150);
+	    columnModel.getColumn(1).setPreferredWidth(200);
+	    columnModel.getColumn(2).setPreferredWidth(250);
+	    columnModel.getColumn(3).setPreferredWidth(150);
+
+	    // Add the table to the container
+	    container.add(tabla);
+	  //edits
+	    loadTable();
+	
+
     
     
 
     
-    //edits
-    loadTable();
+    
 
-    tabla.setBounds(10, 205, 580, 280);
+   
 
     botonEliminatee = new JButton("Eliminate");
     botonEditar = new JButton("Modify");
@@ -132,6 +135,14 @@ private void configureTableContentss(Container container) {
     botonEliminatee.setBounds(30, 500, 120, 20);
     botonEditar.setBounds(180, 500, 120, 20);
     botonReporteee.setBounds(320, 500, 120, 20);
+ // Update the font size for the "Eliminate" button
+    botonEliminatee.setFont(new Font("Arial", Font.PLAIN, 14)); // Set font size to 14
+
+    // Update the font size for the "Modify" button
+    botonEditar.setFont(new Font("Arial", Font.PLAIN, 14)); // Set font size to 14
+
+    // Update the font size for the "Report" button
+    botonReporteee.setFont(new Font("Arial", Font.PLAIN, 14)); // Set font size to 14
 
     container.add(tabla);
     container.add(botonEliminatee);
@@ -159,6 +170,11 @@ private void configureTableContentss(Container container) {
 	    labelDescription.setBounds(190, 50, 220, 15);
 	    labelQuantity.setBounds(220, 90, 220, 15);
 	    labelCategory.setBounds(200, 130, 220, 15);
+	    labelName.setFont(new Font("Arial", Font.BOLD, 16));  // 16 is the font size
+	    labelDescription.setFont(new Font("Arial", Font.BOLD, 16));
+	    labelQuantity.setFont(new Font("Arial", Font.BOLD, 16));
+	    labelCategory.setFont(new Font("Arial", Font.BOLD, 16));
+
 
 	    // Set text color
 	    labelName.setForeground(Color.WHITE);
@@ -180,7 +196,8 @@ private void configureTableContentss(Container container) {
 	    comboCategory.addItem("Sector stocks");
 	    comboCategory.addItem("Domestic stocks");
 	    comboCategory.addItem("International stocks");
-
+	    comboCategory.setFont(new Font("Arial", Font.PLAIN, 14));
+	    comboCategory.setForeground(Color.black);
 	    // Positioning text fields and combo box
 	    textName.setBounds(110, 25, 265, 20);
 	    textDescription.setBounds(110, 65, 265, 20);
@@ -189,9 +206,12 @@ private void configureTableContentss(Container container) {
 
 	    // Buttons
 	    buttonSave = new JButton("Insert");
+	    buttonSave.setFont(new Font("Arial", Font.PLAIN, 14));
 	    bottonClearr = new JButton("Reset");
+	    bottonClearr.setFont(new Font("Arial", Font.PLAIN, 14)); // Set font size to 14
 	    buttonSave.setBounds(165, 175, 80, 20);
 	    bottonClearr.setBounds(255, 175, 80, 20);
+	
 
 	    // Add components to container
 	    container.add(labelName);
@@ -282,6 +302,7 @@ private void configureTableContentss(Container container) {
     button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
     button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
   }
+  
 
   private void abrirReporte() {
     new ReportFrameee(this);
@@ -339,6 +360,10 @@ private void configureTableContentss(Container container) {
 
   private void loadTable() {
     var productos = this.productController.listar();
+    TableColumnModel columnModel = tabla.getColumnModel();
+   
+
+
     productos.forEach(product -> modelllll_idk.addRow(
             new Object[] { product.getId(), product.getName(), product.getDescription(), product.getQuatityy() }));
   }
