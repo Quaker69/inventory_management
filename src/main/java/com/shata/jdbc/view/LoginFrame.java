@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class LoginFrame extends JFrame {
 
@@ -128,6 +129,26 @@ public class LoginFrame extends JFrame {
                 }
             }
         });
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                // Check if the 'Enter' key is pressed
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    loginButton.doClick();  // Simulate a click on the submit button
+                }
+            }
+        });
+
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                // Check if the 'Enter' key is pressed
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    loginButton.doClick();  // Simulate a click on the submit button
+                }
+            }
+        });
+
 
         // Position the login button at the bottom
         gbc.gridwidth = 2;
