@@ -17,7 +17,7 @@ public class LoginFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Set the window size and center it on the screen
-        setSize(400, 250);
+        setSize(510, 580);
         setLocationRelativeTo(null);
 
         // Use a custom look and feel for the window
@@ -28,7 +28,7 @@ public class LoginFrame extends JFrame {
         }
 
         // Set the background color
-        getContentPane().setBackground(new Color(60, 63, 65));
+        getContentPane().setBackground(new Color(226, 241, 242));
 
         // Create a panel for the login form with a GridBagLayout for better control
         JPanel panel = new JPanel();
@@ -42,8 +42,8 @@ public class LoginFrame extends JFrame {
 
         // Title Label
         JLabel titleLabel = new JLabel("Login", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(Color.BLACK);
+        titleLabel.setFont(new Font("italic", Font.BOLD, 42));
+        titleLabel.setForeground(Color.white);
         gbc.gridwidth = 2;  // Span across two columns
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -51,7 +51,7 @@ public class LoginFrame extends JFrame {
 
         // Username Label
         JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        usernameLabel.setFont(new Font("Arial", Font.BOLD, 22));
         usernameLabel.setForeground(Color.WHITE);
         gbc.gridwidth = 1;
         gbc.gridx = 0;
@@ -60,47 +60,53 @@ public class LoginFrame extends JFrame {
 
         // Username Field
         usernameField = new JTextField(20);
-        usernameField.setFont(new Font("Arial", Font.PLAIN, 14));
+        usernameField.setFont(new Font("Arial", Font.PLAIN, 18));
         usernameField.setBackground(new Color(220, 220, 220));
-        usernameField.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
+        usernameField.setBorder(BorderFactory.createLineBorder(new Color(211, 211, 211), 5, true));
         gbc.gridx = 1;
         gbc.gridy = 1;
         panel.add(usernameField, gbc);
 
         // Password Label
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        passwordLabel.setFont(new Font("Arial", Font.BOLD, 22));
         passwordLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 2;
         panel.add(passwordLabel, gbc);
+     // Rounded border for text fields
+       
+        
+
 
         // Password Field
         passwordField = new JPasswordField(20);
-        passwordField.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 18));
         passwordField.setBackground(new Color(220, 220, 220));
-        passwordField.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
+        passwordField.setBorder(BorderFactory.createLineBorder(new Color(211, 211, 211), 5, true));
         gbc.gridx = 1;
         gbc.gridy = 2;
         panel.add(passwordField, gbc);
 
         // Login Button
-        loginButton = new JButton("Login");
-        loginButton.setFont(new Font("Arial", Font.BOLD, 16));
-        loginButton.setBackground(new Color(34, 167, 240));  // Blue color for the button
+        loginButton = new JButton("Submit");
+        loginButton.setFont(new Font("Arial", Font.BOLD, 24));
+        loginButton.setBackground(new Color(211,211,211));  // Blue color for the button
         loginButton.setForeground(Color.BLACK);
         loginButton.setFocusPainted(false);
-        loginButton.setBorder(BorderFactory.createLineBorder(new Color(34, 167, 240)));
+        loginButton.setBorder(BorderFactory.createLineBorder(new Color(211,211,211)));
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        loginButton.setPreferredSize(new Dimension(90, 30));
+        
 
         // Hover effect for the login button
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                loginButton.setBackground(new Color(28, 140, 211));  // Darken the button color when hovered
+                loginButton.setBackground(new Color(211, 211, 211));  // Darken the button color when hovered
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                loginButton.setBackground(new Color(34, 167, 240));  // Reset the button color when the mouse leaves
+                loginButton.setBackground(new Color(211,211,211));  // Reset the button color when the mouse leaves
             }
         });
 
