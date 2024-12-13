@@ -2,9 +2,7 @@ package com.shata.jdbc.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.net.URL;
 
 public class LoginFrame extends JFrame {
@@ -12,17 +10,18 @@ public class LoginFrame extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton loginButton;
+    private JLabel aboutLabel;  // New JLabel for About us
 
     public LoginFrame() {
-    	try {
-    	    URL iconUrl = new URL("https://static.thenounproject.com/png/4866887-200.png");
-    	    ImageIcon icon = new ImageIcon(iconUrl);
-    	    Image image = icon.getImage();  // Convert to Image object
-    	    setIconImage(image);  // Set the icon image for the application window
-    	} catch (Exception e) {
-    	    JOptionPane.showMessageDialog(this, "Error: Unable to load icon.");
-    	    e.printStackTrace();
-    	}
+        try {
+            URL iconUrl = new URL("https://static.thenounproject.com/png/4866887-200.png");
+            ImageIcon icon = new ImageIcon(iconUrl);
+            Image image = icon.getImage();  // Convert to Image object
+            setIconImage(image);  // Set the icon image for the application window
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: Unable to load icon.");
+            e.printStackTrace();
+        }
 
         // Set the window title and default close operation..
         setTitle("Login");
@@ -86,10 +85,6 @@ public class LoginFrame extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         panel.add(passwordLabel, gbc);
-     // Rounded border for text fields
-       
-        
-
 
         // Password Field
         passwordField = new JPasswordField(20);
@@ -109,7 +104,6 @@ public class LoginFrame extends JFrame {
         loginButton.setBorder(BorderFactory.createLineBorder(new Color(211,211,211)));
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginButton.setPreferredSize(new Dimension(90, 30));
-        
 
         // Hover effect for the login button
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,6 +134,7 @@ public class LoginFrame extends JFrame {
                 }
             }
         });
+
         usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -160,11 +155,30 @@ public class LoginFrame extends JFrame {
             }
         });
 
-
         // Position the login button at the bottom
         gbc.gridwidth = 2;
         gbc.gridx = 0;
         gbc.gridy = 3;
         panel.add(loginButton, gbc);
+
+        // Create the About us label
+        aboutLabel = new JLabel("<html><u>© 3M Limited About Us</u></html>", SwingConstants.LEFT);
+        aboutLabel.setForeground(Color.BLUE);  // Set text color to blue
+        aboutLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));  // Change cursor to hand when hovering
+        aboutLabel.setFont(new Font("Arial", Font.PLAIN, 16));  // Set font size
+
+        // Set GridBagConstraints for the About us label
+        gbc.gridx = 0;
+        gbc.gridy = 4;  // Position it below the Submit button
+        gbc.gridwidth = 2;  // Span across two columns
+        panel.add(aboutLabel, gbc);
+
+        // Add mouse listener to the About label
+        aboutLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                // Open the About page (or show a dialog for now)
+                JOptionPane.showMessageDialog(LoginFrame.this, "This is the About Us section.\nDetails about 3M Limited.", "About Us", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
     }
 }
