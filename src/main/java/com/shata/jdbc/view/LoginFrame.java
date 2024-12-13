@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 
 public class LoginFrame extends JFrame {
 
@@ -13,6 +14,16 @@ public class LoginFrame extends JFrame {
     private JButton loginButton;
 
     public LoginFrame() {
+    	try {
+    	    URL iconUrl = new URL("https://static.thenounproject.com/png/4866887-200.png");
+    	    ImageIcon icon = new ImageIcon(iconUrl);
+    	    Image image = icon.getImage();  // Convert to Image object
+    	    setIconImage(image);  // Set the icon image for the application window
+    	} catch (Exception e) {
+    	    JOptionPane.showMessageDialog(this, "Error: Unable to load icon.");
+    	    e.printStackTrace();
+    	}
+
         // Set the window title and default close operation
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
