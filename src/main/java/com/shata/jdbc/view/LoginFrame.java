@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame {
         }
 
         // Set the background color
-        getContentPane().setBackground(new Color(226, 241, 242));
+        getContentPane().setBackground(new Color(255,255,255));
 
         // Create a panel for the login form with a GridBagLayout for better control
         JPanel panel = new JPanel();
@@ -162,10 +162,15 @@ public class LoginFrame extends JFrame {
         panel.add(loginButton, gbc);
 
         // Create the About us label
-        aboutLabel = new JLabel("<html><u>© 3M Limited About Us</u></html>", SwingConstants.LEFT);
-        aboutLabel.setForeground(Color.BLUE);  // Set text color to blue
+        aboutLabel = new JLabel("<html><u><span color:black >© </span>About Us</u></html>", SwingConstants.LEFT);
+        aboutLabel.setForeground(Color.white);  // Set text color to blue
         aboutLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));  // Change cursor to hand when hovering
         aboutLabel.setFont(new Font("Arial", Font.PLAIN, 16));  // Set font size
+        aboutLabel.setBorder(BorderFactory.createEmptyBorder(0, 12, 0, 10)); // Top, Left, Bottom, Right padding
+        aboutLabel.setOpaque(true);  // Make background visible
+        aboutLabel.setBackground(Color.DARK_GRAY);  // Set background color for better visibility
+
+
 
         // Set GridBagConstraints for the About us label
         gbc.gridx = 0;
@@ -177,7 +182,7 @@ public class LoginFrame extends JFrame {
         aboutLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 // Open the About page (or show a dialog for now)
-                JOptionPane.showMessageDialog(LoginFrame.this, "This is the About Us section.\nDetails about 3M Limited.", "About Us", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(LoginFrame.this, "This is about Inventory Stock Management.\n developed by 3M Limited.", "About Us", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
